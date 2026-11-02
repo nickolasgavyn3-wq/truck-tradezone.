@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>2016 Peterbilt 389 Glider | Truck Tradezone | El Paso, TX</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #e67e22;
+      --primary-dark: #d35400;
+      --dark: #0f172a;
+      --dark-2: #1e293b;
+      --gray: #64748b;
+      --border: #e2e8f0;
+      --success: #16a34a;
+      --danger: #dc2626;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { -webkit-text-size-adjust: 100%; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #f1f5f9;
+      color: #1e293b;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    a { color: var(--primary); text-decoration: none; }
+    img { max-width: 100%; height: auto; display: block; }
+    .no-link { color: inherit; cursor: default; text-decoration: none; pointer-events: none; }
+
+    /* Top bar */
+    .topbar {
+      background: var(--dark);
+      color: #94a3b8;
+      font-size: 12px;
+      padding: 7px 0;
+    }
+    .topbar-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    /* Header */
+    header {
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 1px 3px rgba(0,0,0,.05);
+    }
+    .header-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .logo-wrap img { height: 40px; width: auto; }
+    .header-phone {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--dark);
+      color: #fff;
+      padding: 9px 14px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 14px;
+      white-space: nowrap;
+    }
+    .header-phone:hover { background: var(--dark-2); text-decoration: none; color: #fff; }
+    .header-phone svg { width: 16px; height: 16px; flex-shrink: 0; }
+
+    /* Layout */
+    .container { max-width: 1280px; margin: 0 auto; padding: 16px; }
+    .breadcrumb {
+      font-size: 12px;
+      color: var(--gray);
+      margin-bottom: 14px;
+      overflow-x: auto;
+      white-space: nowrap;
+      -webkit-overflow-scrolling: touch;
+    }
+    .breadcrumb span { color: #94a3b8; margin: 0 3px; }
+
+    .main-grid {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* Cards */
+    .card {
+      background: #fff;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+      box-shadow: 0 1px 2px rgba(0,0,0,.04);
+    }
+
+    /* Gallery - mobile first */
+    .gallery-main-wrap {
+      position: relative;
+      background: #0f172a;
+      width: 100%;
+      aspect-ratio: 4/3;
+      max-height: 420px;
+    }
+    .gallery-main {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+    .thumbs {
+      display: flex;
+      gap: 6px;
+      padding: 10px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      background: #f8fafc;
+      border-top: 1px solid var(--border);
+      scrollbar-width: thin;
+    }
+    .thumbs img {
+      width: 72px;
+      height: 54px;
+      object-fit: cover;
+      border-radius: 5px;
+      cursor: pointer;
+      border: 2px solid transparent;
+      flex-shrink: 0;
+    }
+    .thumbs img.active, .thumbs img:hover { border-color: var(--primary); }
+
+    /* Videos */
+    .section-pad { padding: 16px; }
+    .section-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .video-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .video-card {
+      background: #0f172a;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .video-card video {
+      width: 100%;
+      aspect-ratio: 16/10;
+      object-fit: contain;
+      display: block;
+      background: #000;
+    }
+    .video-label {
+      font-size: 11px;
+      color: #94a3b8;
+      padding: 6px 10px;
+      background: #1e293b;
+    }
+
+    /* Sidebar */
+    .sidebar { display: flex; flex-direction: column; gap: 14px; }
+    .price-card { padding: 18px; }
+    .badge {
+      display: inline-block;
+      background: #fef3c7;
+      color: #b45309;
+      font-size: 10px;
+      font-weight: 600;
+      padding: 3px 7px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      margin-bottom: 10px;
+    }
+    .price-card h1 {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--dark);
+      letter-spacing: -0.3px;
+      line-height: 1.25;
+      margin-bottom: 4px;
+    }
+    .price {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--danger);
+      letter-spacing: -0.4px;
+      margin: 6px 0 2px;
+    }
+    .stock-meta {
+      font-size: 12px;
+      color: var(--gray);
+      margin-bottom: 14px;
+      word-break: break-all;
+    }
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 12px 16px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 14px;
+      border: none;
+      cursor: pointer;
+      transition: background .15s;
+      text-decoration: none;
+    }
+    .btn-primary { background: var(--primary); color: #fff; }
+    .btn-primary:hover { background: var(--primary-dark); text-decoration: none; color: #fff; }
+    .btn-outline {
+      background: #fff;
+      color: var(--dark);
+      border: 1.5px solid var(--border);
+      margin-top: 8px;
+    }
+    .btn-outline:hover { border-color: #94a3b8; text-decoration: none; color: var(--dark); }
+
+    .seller-card { padding: 16px; }
+    .seller-card h2 {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--gray);
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      margin-bottom: 10px;
+    }
+    .seller-name { font-size: 16px; font-weight: 700; color: var(--dark); margin-bottom: 4px; }
+    .seller-loc { font-size: 13px; color: var(--gray); margin-bottom: 10px; }
+    .phone-big { font-size: 18px; font-weight: 700; color: var(--success); margin-bottom: 2px; }
+    .contact-label { font-size: 12px; color: var(--gray); }
+
+    /* Content */
+    .content-card { padding: 18px; margin-top: 16px; }
+    .content-card h2 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 12px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+    .description {
+      font-size: 14px;
+      line-height: 1.65;
+      color: #334155;
+      white-space: pre-line;
+    }
+    .spec-section { margin-top: 22px; }
+    .spec-section h3 {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+    .spec-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      font-size: 13px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .spec-row { display: contents; }
+    .spec-row dt, .spec-row dd {
+      padding: 9px 12px;
+      border-bottom: 1px solid var(--border);
+    }
+    .spec-row:nth-child(odd) dt,
+    .spec-row:nth-child(odd) dd { background: #f8fafc; }
+    .spec-row dt { color: var(--gray); font-weight: 500; }
+    .spec-row dd { font-weight: 600; color: var(--dark); margin: 0; text-align: right; }
+
+    /* Recommended */
+    .recommended { margin-top: 28px; }
+    .recommended h2 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+    .rec-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+    .rec-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .rec-card img {
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+      background: #e2e8f0;
+    }
+    .rec-info { padding: 12px; }
+    .rec-info h3 { font-size: 13px; font-weight: 600; margin-bottom: 4px; line-height: 1.3; }
+    .rec-price { font-weight: 700; color: var(--danger); font-size: 14px; }
+    .rec-sold { font-weight: 600; color: #94a3b8; font-style: italic; font-size: 13px; }
+
+    /* Footer */
+    footer {
+      background: var(--dark);
+      color: #94a3b8;
+      margin-top: 40px;
+      padding: 32px 16px 20px;
+      font-size: 12px;
+    }
+    .footer-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.3fr repeat(3, 1fr);
+      gap: 24px;
+    }
+    footer h4 {
+      color: #fff;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      margin-bottom: 10px;
+    }
+    footer ul { list-style: none; }
+    footer li { margin: 6px 0; }
+    footer .no-link { color: #64748b; }
+    .footer-brand img { height: 32px; opacity: 0.9; }
+    .footer-bottom {
+      max-width: 1280px;
+      margin: 28px auto 0;
+      padding-top: 18px;
+      border-top: 1px solid #1e293b;
+      text-align: center;
+      color: #475569;
+      font-size: 11px;
+    }
+    .social-row {
+      display: flex;
+      gap: 14px;
+      margin-top: 10px;
+      flex-wrap: wrap;
+    }
+    .social-row span {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      color: #64748b;
+    }
+    .social-row img { width: 16px; height: 16px; filter: invert(55%); }
+
+    /* ========== MOBILE ========== */
+    @media (max-width: 900px) {
+      .main-grid { grid-template-columns: 1fr; }
+      .sidebar { position: static; order: -1; } /* price first on mobile */
+      .rec-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+      .gallery-main-wrap { max-height: 320px; }
+    }
+    @media (max-width: 600px) {
+      .topbar-inner { font-size: 11px; }
+      .header-inner { padding: 8px 12px; }
+      .logo-wrap img { height: 34px; }
+      .header-phone { padding: 8px 11px; font-size: 13px; }
+      .container { padding: 12px; }
+      .gallery-main-wrap { aspect-ratio: 4/3; max-height: 280px; }
+      .thumbs img { width: 64px; height: 48px; }
+      .video-grid { grid-template-columns: 1fr; }
+      .price { font-size: 26px; }
+      .price-card h1 { font-size: 18px; }
+      .spec-grid { grid-template-columns: 1fr; }
+      .spec-row dd { text-align: left; padding-top: 0; border-top: none; }
+      .rec-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+      .rec-card img { height: 100px; }
+      .footer-inner { grid-template-columns: 1fr; gap: 20px; }
+      .content-card, .section-pad, .price-card, .seller-card { padding: 14px; }
+    }
+    @media (max-width: 380px) {
+      .rec-grid { grid-template-columns: 1fr; }
+      .header-phone span { display: none; } /* show only icon on very small */
+    }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="topbar-inner">
+      <span>Professional Used Semi Trucks • El Paso, Texas</span>
+      <span>Mon–Sat 8am–6pm</span>
+    </div>
+  </div>
+
+  <header>
+    <div class="header-inner">
+      <div class="logo-wrap">
+        <img src="logo.png" alt="Truck Tradezone">
+      </div>
+      <a href="tel:+19106668740" class="header-phone">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        <span>+1 (910) 666-8740</span>
+      </a>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="breadcrumb">Home <span>›</span> Sleeper Trucks <span>›</span> Peterbilt <span>›</span> 389 <span>›</span> 2016 Peterbilt 389</div>
+
+    <div class="main-grid">
+      <!-- LEFT -->
+      <div>
+        <div class="card">
+          <div class="gallery-main-wrap">
+            <img id="mainImg" class="gallery-main" src="img1.jpg" alt="2016 Peterbilt 389">
+          </div>
+          <div class="thumbs" id="thumbs"></div>
+        </div>
+
+        <div class="card section-pad" style="margin-top:14px;">
+          <div class="section-title">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            Videos
+          </div>
+          <div class="video-grid">
+            <div class="video-card">
+              <video controls preload="metadata" poster="img1.jpg" playsinline>
+                <source src="video1.mp4" type="video/mp4">
+              </video>
+              <div class="video-label">360° Walkaround</div>
+            </div>
+            <div class="video-card">
+              <video controls preload="metadata" playsinline>
+                <source src="video2.mp4" type="video/mp4">
+              </video>
+              <div class="video-label">Engine Close-up</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card content-card">
+          <h2>Description</h2>
+          <div class="description">*** ENGINE OVERHAUL WITH PAPERWORK - GGGG FACTORY GLIDER - ELD EXEMPT 6NZ ***
+
+2016 Peterbilt 389 Glider / CAT C15 475HP / 13 Speed / 63" Flat Top
+
+~ Caterpillar C15 6NZ - 475HP - New Head just Installed
+~ 418,007 Miles on Engine Overhaul Done by Lang Truck & Trailer Service LLC With Paperwork
+~ 907,028 Total Miles on Truck
+~ 13 Speed Transmission
+~ 3.55 Rears
+~ 276” Wheelbase
+~ 63" Flat Top Sleeper
+~ GGGG
+~ 11R22.5 Virgin Rubber
+~ Paccar Suspension
+~ 3 Stage Jake Brake
+~ Air Slide 5th Wheel
+~ NEW Bumper
+~ NEW 1/4 Fenders / Mud Flaps / Pogo
+~ NEW Drag Link
+~ NEW Steer Tires and Brakes
+~ NEW Sleeper Air Bags
+
+Priced at $40,000</div>
+
+          <div class="spec-section">
+            <h3>General</h3>
+            <dl class="spec-grid">
+              <div class="spec-row"><dt>Year</dt><dd>2016</dd></div>
+              <div class="spec-row"><dt>Manufacturer</dt><dd>PETERBILT</dd></div>
+              <div class="spec-row"><dt>Model</dt><dd>389</dd></div>
+              <div class="spec-row"><dt>Mileage</dt><dd>907,028 mi</dd></div>
+              <div class="spec-row"><dt>VIN</dt><dd>1NPXGGGG50D340882</dd></div>
+              <div class="spec-row"><dt>Condition</dt><dd>Used</dd></div>
+              <div class="spec-row"><dt>Stock Number</dt><dd>340882</dd></div>
+            </dl>
+          </div>
+
+          <div class="spec-section">
+            <h3>Engine</h3>
+            <dl class="spec-grid">
+              <div class="spec-row"><dt>Horsepower</dt><dd>475 HP</dd></div>
+              <div class="spec-row"><dt>Manufacturer</dt><dd>CATERPILLAR</dd></div>
+              <div class="spec-row"><dt>Model</dt><dd>C15</dd></div>
+              <div class="spec-row"><dt>Engine Overhaul</dt><dd>Yes</dd></div>
+              <div class="spec-row"><dt>Miles Since Overhaul</dt><dd>418,007 mi</dd></div>
+            </dl>
+          </div>
+
+          <div class="spec-section">
+            <h3>Powertrain</h3>
+            <dl class="spec-grid">
+              <div class="spec-row"><dt>Transmission</dt><dd>Manual</dd></div>
+              <div class="spec-row"><dt>Speeds</dt><dd>13 Spd</dd></div>
+            </dl>
+          </div>
+
+          <div class="spec-section">
+            <h3>Chassis</h3>
+            <dl class="spec-grid">
+              <div class="spec-row"><dt>Suspension</dt><dd>Paccar</dd></div>
+              <div class="spec-row"><dt>Rear Axles</dt><dd>Tandem</dd></div>
+              <div class="spec-row"><dt>Front Axle</dt><dd>12,000 lb</dd></div>
+              <div class="spec-row"><dt>Rear Axle</dt><dd>40,000 lb</dd></div>
+              <div class="spec-row"><dt>Tires</dt><dd>11R22.5</dd></div>
+              <div class="spec-row"><dt>Wheels</dt><dd>All Aluminum</dd></div>
+              <div class="spec-row"><dt>Wheelbase</dt><dd>276 in</dd></div>
+              <div class="spec-row"><dt>5th Wheel</dt><dd>Sliding</dd></div>
+            </dl>
+          </div>
+
+          <div class="spec-section">
+            <h3>Interior & Exterior</h3>
+            <dl class="spec-grid">
+              <div class="spec-row"><dt>Drive Side</dt><dd>Left Hand Drive</dd></div>
+              <div class="spec-row"><dt>Sleeper Type</dt><dd>Flat Top</dd></div>
+              <div class="spec-row"><dt>Sleeper Size</dt><dd>63 in</dd></div>
+              <div class="spec-row"><dt>Beds</dt><dd>1</dd></div>
+              <div class="spec-row"><dt>Glider Kit</dt><dd>Yes</dd></div>
+              <div class="spec-row"><dt>Fuel Capacity</dt><dd>270 gal</dd></div>
+              <div class="spec-row"><dt>Color</dt><dd>Orange</dd></div>
+            </dl>
+          </div>
+        </div>
+      </div>
+
+      <!-- SIDEBAR -->
+      <div class="sidebar">
+        <div class="card price-card">
+          <div class="badge">Glider Kit • ELD Exempt</div>
+          <h1>2016 Peterbilt 389</h1>
+          <div class="price">$40,000</div>
+          <div class="stock-meta">Stock #340882 • VIN 1NPXGGGG50D340882</div>
+          <a href="tel:+19106668740" class="btn btn-primary">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            Call +1 (910) 666-8740
+          </a>
+          <a href="mailto:Pratt6856@gmail.com" class="btn btn-outline">Email Seller</a>
+        </div>
+
+        <div class="card seller-card">
+          <h2>Seller Information</h2>
+          <div class="seller-name">Truck Tradezone</div>
+          <div class="seller-loc">El Paso, Texas</div>
+          <div class="phone-big">+1 (910) 666-8740</div>
+          <div class="contact-label">Sales Department</div>
+        </div>
+
+        <div class="card seller-card">
+          <h2>Truck Location</h2>
+          <div style="font-size:14px; font-weight:600; color:var(--dark);">El Paso, Texas</div>
+          <div style="font-size:12px; color:var(--gray); margin-top:3px;">Available for viewing by appointment</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recommended -->
+    <div class="recommended">
+      <h2>Recommended For You</h2>
+      <div class="rec-grid">
+        <div class="rec-card">
+          <img src="rec2013.jpg" alt="2013 Peterbilt 389" loading="lazy">
+          <div class="rec-info">
+            <h3>2013 PETERBILT 389</h3>
+            <div class="rec-sold">SOLD</div>
+          </div>
+        </div>
+        <div class="rec-card">
+          <img src="rec2014.jpg" alt="2014 Peterbilt 389" loading="lazy">
+          <div class="rec-info">
+            <h3>2014 PETERBILT 389</h3>
+            <div class="rec-sold">SOLD</div>
+          </div>
+        </div>
+        <div class="rec-card">
+          <img src="rec2002.jpg" alt="2002 Peterbilt 379" loading="lazy">
+          <div class="rec-info">
+            <h3>2002 PETERBILT 379</h3>
+            <div class="rec-price">$12,000</div>
+          </div>
+        </div>
+        <div class="rec-card">
+          <img src="rec2015.jpg" alt="2015 Peterbilt 389" loading="lazy">
+          <div class="rec-info">
+            <h3>2015 PETERBILT 389</h3>
+            <div class="rec-price">$25,000</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">
+          <img src="logo.png" alt="Truck Tradezone">
+        </div>
+        <p style="margin-top:8px; line-height:1.5;">Professional used semi trucks and commercial vehicles. El Paso, Texas.</p>
+        <div class="social-row">
+          <span class="no-link"><img src="facebook.svg" alt=""> Facebook</span>
+          <span class="no-link"><img src="instagram.svg" alt=""> Instagram</span>
+        </div>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><span class="no-link">Returns and Refunds</span></li>
+          <li><span class="no-link">FR8Star Shipping</span></li>
+          <li><span class="no-link">Currency Financing</span></li>
+          <li><span class="no-link">Advertising</span></li>
+          <li><span class="no-link">Contact Us</span></li>
+          <li><span class="no-link">Subscriptions</span></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <ul>
+          <li><span class="no-link">Utility Trailers For Sale</span></li>
+          <li><span class="no-link">Vocational Trucks For Sale</span></li>
+          <li><span class="no-link">Motorsports and Powersports</span></li>
+          <li><span class="no-link">Campers, Travel Trailers & RVs</span></li>
+          <li><span class="no-link">Power Systems & Generators</span></li>
+          <li><span class="no-link">Farm Equipment Auctions</span></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <ul>
+          <li><span class="no-link">Legal Notices & Accessibility</span></li>
+          <li><span class="no-link">Privacy Policy</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2026 Truck Tradezone — El Paso, Texas. All rights reserved.
+    </div>
+  </footer>
+
+  <script>
+    const images = [];
+    for (let i = 1; i <= 23; i++) images.push('img' + i + '.jpg');
+
+    const thumbs = document.getElementById('thumbs');
+    const mainImg = document.getElementById('mainImg');
+
+    images.forEach(function(src, idx) {
+      const img = document.createElement('img');
+      img.src = src;
+      img.alt = 'Photo ' + (idx + 1);
+      img.loading = 'lazy';
+      if (idx === 0) img.classList.add('active');
+      img.onclick = function() {
+        mainImg.src = src;
+        document.querySelectorAll('.thumbs img').forEach(function(t) { t.classList.remove('active'); });
+        img.classList.add('active');
+      };
+      thumbs.appendChild(img);
+    });
+  </script>
+</body>
+</html>
